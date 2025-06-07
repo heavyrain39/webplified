@@ -406,9 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (domElements.dragDropArea) {
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            domElements.dragDropArea.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); }, false);
-        });
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => { e.preventDefault(); e.stopPropagation(); }, false);
         ['dragenter', 'dragover'].forEach(eventName => {
             domElements.dragDropArea.addEventListener(eventName, (e) => {
                 if (domElements.listAreaWrapper.classList.contains('processing')) return;
@@ -447,8 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // --- NEW: Language determination logic ---
+    
     function getInitialLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const langFromUrl = urlParams.get('lang');
@@ -470,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         console.log("Using default language: en");
-        return 'en'; // Fallback
+        return 'en';
     }
 
     function init() {
@@ -479,7 +476,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialLang = getInitialLanguage();
         UI.updateTexts(initialLang, state, domElements, uiCallbacks, false);
 
-        UI.loadThemePreference(state.themes, domElements.body, domElements.footerThemeButtons, state.currentLanguage);
+        // --- CORRECTED FUNCTION CALL ---
+        UI.loadThemePreference(state.themes, domElements.body, domElements.footerThemeButtons);
+        
         if(domElements.fileInput) domElements.fileInput.accept = state.conversionMode === 'toWebp' ? ".png,.jpg,.jpeg" : ".webp";
         if(domElements.reverseFormatSettingGroup) domElements.reverseFormatSettingGroup.style.display = state.conversionMode === 'fromWebp' ? 'flex' : 'none';
         

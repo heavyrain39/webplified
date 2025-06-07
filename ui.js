@@ -54,12 +54,15 @@ export function applyTheme(themeName, themes, body, footerThemeButtons, showNoti
     }
 }
 
-export function loadLanguagePreference(state, domElements, callbacks) {
-    const savedLang = localStorage.getItem('webpConverterLang');
-    const browserLang = navigator.language.split('-')[0];
-    const initialLang = (savedLang && translations[savedLang]) ? savedLang : (translations[browserLang] ? browserLang : 'en');
-    updateTexts(initialLang, state, domElements, callbacks, false);
+// --- NEWLY ADDED FUNCTION ---
+export function loadThemePreference(themes, body, footerThemeButtons) {
+    const savedTheme = localStorage.getItem('webpConverterTheme');
+    const initialTheme = (savedTheme && themes.includes(savedTheme)) ? savedTheme : themes[0];
+    console.log(`[UI-LOG] Applying initial theme: ${initialTheme}`);
+    // Apply the theme without showing a notification on initial load
+    applyTheme(initialTheme, themes, body, footerThemeButtons, false, null);
 }
+
 
 export function updateTexts(lang, state, domElements, callbacks, showNotification) {
     const oldLanguage = state.currentLanguage;
@@ -77,14 +80,12 @@ export function updateTexts(lang, state, domElements, callbacks, showNotificatio
         }
     });
 
-    // START: Update Support Button Logic
     if (domElements.supportLinkBtn) {
         const supportURL = getToastMessage(lang, 'support_us_url');
         const supportText = getToastMessage(lang, 'support_us_action_btn');
         domElements.supportLinkBtn.href = supportURL;
         domElements.supportLinkBtn.textContent = supportText;
     }
-    // END: Update Support Button Logic
 
     if (domElements.formatToggleSwitch) {
         const pngButtonTooltip = domElements.formatToggleSwitch.querySelector('button[data-format="png"] .tooltip-text');
@@ -95,7 +96,6 @@ export function updateTexts(lang, state, domElements, callbacks, showNotificatio
 
     domElements.langButtons.forEach(button => button.classList.toggle('active', button.dataset.lang === lang));
     
-    // Execute all necessary callbacks after text update
     if (callbacks.updateFilenameInputStates) callbacks.updateFilenameInputStates();
     if (callbacks.updateQualitySliderAndTooltip) callbacks.updateQualitySliderAndTooltip();
     
@@ -144,10 +144,8 @@ export function updateFilenameInputStates(select, prefix, suffix) {
     if (suffix.disabled) suffix.value = '';
 }
 
-// --- Drag and Drop State ---
 let draggedElement = null;
 
-// This is now the definitive, robust implementation.
 function initializeDragAndDropSort(fileListElement, filesToConvert, onOrderChange) {
     const cleanup = () => {
         const indicator = fileListElement.querySelector('.drag-over-indicator');
@@ -162,7 +160,7 @@ function initializeDragAndDropSort(fileListElement, filesToConvert, onOrderChang
         
         draggedElement = target;
         e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', target.dataset.fileId); // Necessary for Firefox
+        e.dataTransfer.setData('text/plain', target.dataset.fileId);
         
         setTimeout(() => {
             draggedElement.classList.add('dragging');
@@ -207,7 +205,6 @@ function initializeDragAndDropSort(fileListElement, filesToConvert, onOrderChang
         
         cleanup();
 
-        // Report the indices to the "Boss" (main.js)
         if (fromIndex !== -1 && toIndex !== -1) {
             onOrderChange(fromIndex, toIndex);
         }
@@ -216,15 +213,13 @@ function initializeDragAndDropSort(fileListElement, filesToConvert, onOrderChang
     fileListElement.addEventListener('dragend', cleanup);
 }
 
-// --- File List Rendering ---
 export function renderFilePoolList(filesToConvert, fileListElement, listAreaWrapper, formatFileSize, currentLanguage, removeFileFromPoolCallback, onOrderChange) {
     if (!fileListElement || !listAreaWrapper) return;
     
     const isProcessing = listAreaWrapper.classList.contains('processing');
     
-    fileListElement.innerHTML = ''; // Clear the list completely
+    fileListElement.innerHTML = '';
 
-    // Re-create list items
     filesToConvert.forEach(fileItem => {
         const li = document.createElement('li');
         li.className = 'file-item minimal';
@@ -275,7 +270,6 @@ export function renderFilePoolList(filesToConvert, fileListElement, listAreaWrap
         fileListElement.appendChild(li);
     });
 
-    // Attach drag-and-drop listeners to the parent list after every render.
     if (!isProcessing) {
         initializeDragAndDropSort(fileListElement, filesToConvert, onOrderChange);
     }
@@ -289,7 +283,7 @@ export function renderConversionResults(convertedFiles, fileListElement, formatF
         const li = document.createElement('li');
         li.classList.add('file-item', 'minimal', 'result-item');
         li.dataset.fileId = resultItem.fileId;
-        li.draggable = false; // Results are not draggable
+        li.draggable = false;
 
         const thumbnailImg = document.createElement('img');
         thumbnailImg.classList.add('thumbnail');
@@ -389,7 +383,6 @@ export function updateListTitleAndCount(listTitleElement, displayingResults, fil
     listTitleElement.innerHTML = `${baseTitle} (<span id='file-count-pool'>${count}</span>)`;
 }
 
-// --- Progress Bar & UI State Functions ---
 let optimisticAnimationFrameId = null;
 
 export function updateProgressBarReal(processed, total, progressBarFill, progressText) {
@@ -401,8 +394,6 @@ export function updateProgressBarReal(processed, total, progressBarFill, progres
 
 export function startOptimisticProgress(listAreaWrapper, progressBarFill, progressPercentageText, total, processed) {
     if (optimisticAnimationFrameId) cancelAnimationFrame(optimisticAnimationFrameId);
-    // This function is now a placeholder as the animation logic was complex and buggy.
-    // The real-time progress is sufficient.
 }
 
 export function stopOptimisticProgress() {
@@ -413,22 +404,20 @@ export function stopOptimisticProgress() {
 }
 
 export function showConversionProgressUI(overlay, wrapper, progressBarFill, progressText, clearBtn, convertBtn, fileInput, dragDropArea) {
-    if (overlay) {
-        overlay.style.display = 'flex';
-        overlay.style.pointerEvents = 'auto';
-    }
+    if (overlay) overlay.style.display = 'flex';
+    
     if (wrapper) wrapper.classList.add('processing');
+
     updateProgressBarReal(0, 1, progressBarFill, progressText);
     [clearBtn, convertBtn, fileInput].forEach(el => el && (el.disabled = true));
     if(dragDropArea) dragDropArea.classList.add('disabled-while-processing');
 }
 
 export function hideConversionProgressUI(overlay, wrapper, clearBtn, convertBtn, fileInput, dragDropArea, fileList, poolCount, isResult, lang) {
-    if (overlay) {
-        overlay.style.display = 'none';
-        overlay.style.pointerEvents = 'none';
-    }
+    if (overlay) overlay.style.display = 'none';
+
     if (wrapper) wrapper.classList.remove('processing');
+
     [convertBtn, fileInput].forEach(el => el && (el.disabled = false));
     if(convertBtn) convertBtn.textContent = getToastMessage(lang, "convert_all_btn_text");
     if(clearBtn) clearBtn.disabled = !(!isResult && poolCount > 0);
@@ -436,7 +425,6 @@ export function hideConversionProgressUI(overlay, wrapper, clearBtn, convertBtn,
 }
 
 
-// --- Comparison Modal Functions ---
 let currentComparisonOriginalUrl = null; 
 let currentComparisonConvertedUrl = null;
 let comparisonSliderHandle = null;
@@ -450,7 +438,6 @@ function handleComparisonMouseMove(e) {
     const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
     const percentage = (x / rect.width) * 100;
     
-    // Target the original image (the one on top) for clipping
     container.querySelector('.comparison-original').style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
     comparisonSliderHandle.style.left = `${percentage}%`;
 }
@@ -482,7 +469,6 @@ export function openComparisonModalUI(fileId, convertedFiles, modal, container, 
         loadedCount++;
         if (loadedCount < 2) return;
 
-        // The order of appending doesn't matter as much because of z-index in CSS
         container.appendChild(originalImg);
         container.appendChild(convertedImg);
 
@@ -502,7 +488,6 @@ export function openComparisonModalUI(fileId, convertedFiles, modal, container, 
         container.appendChild(convertedLabel);
 
         const initialPercentage = 50;
-        // Apply initial clip-path to the original image
         originalImg.style.clipPath = `inset(0 ${100 - initialPercentage}% 0 0)`;
         if (comparisonSliderHandle) comparisonSliderHandle.style.left = `${initialPercentage}%`;
     };
