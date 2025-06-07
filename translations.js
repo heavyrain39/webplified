@@ -4,7 +4,8 @@ export const translations = {
         page_title: "Webplified. - Free WebP Converter", project_name_header: "Webplified.",
         toggle_mode_png_jpg_to_webp: "PNG/JPG → WebP", toggle_mode_webp_to_png_jpg: "WebP → PNG/JPG",
         drag_drop_text_to_webp: "Drag & drop PNG, JPG files here or", drag_drop_text_from_webp: "Drag & drop WebP files here or",
-        select_files_btn: "Select Files", upload_constraints_text: "Max 100 files, 20MB each (Warn >10MB)",
+        select_files_btn: "Select Files", 
+        upload_constraints_text: "Max 100 files, 20MB each", // Modified
         conversion_candidate_pool_title: "Conversion Candidates (<span id='file-count-pool'>0</span> files)",
         conversion_results_title_short: "Conversion Results (<span id='file-count-pool'>0</span> files)",
         remove_btn_text: "Remove", conversion_settings_title: "Conversion Settings", quality_label_simple: "Quality",
@@ -68,7 +69,7 @@ export const translations = {
         error_web_worker_unsupported: "Web Workers are not supported in this browser. This app may not work correctly.",
         no_files_to_convert_warning: "There are no files in the list to convert.",
         no_converted_files_warning: "There are no converted files to download.",
-        error_creating_zip: "Error creating ZIP file: {message}",
+        error_creating_zip: "Error al crear el archivo ZIP: {message}",
         error_creating_download_link: "Error preparing file for download.",
 
 
@@ -87,7 +88,8 @@ export const translations = {
         page_title: "Webplified. - 무료 WebP 변환기", project_name_header: "Webplified.",
         toggle_mode_png_jpg_to_webp: "PNG/JPG → WebP", toggle_mode_webp_to_png_jpg: "WebP → PNG/JPG",
         drag_drop_text_to_webp: "여기에 PNG, JPG 파일을 드래그 앤 드롭하거나", drag_drop_text_from_webp: "여기에 WebP 파일을 드래그 앤 드롭하거나",
-        select_files_btn: "파일 선택", upload_constraints_text: "최대 100개 파일, 각 20MB 이하 (10MB 초과 시 경고)",
+        select_files_btn: "파일 선택", 
+        upload_constraints_text: "최대 100개 파일, 각 20MB 이하", // 수정됨
         conversion_candidate_pool_title: "변환 후보 목록 (<span id='file-count-pool'>0</span>개)",
         conversion_results_title_short: "변환 결과 (<span id='file-count-pool'>0</span>개)",
         remove_btn_text: "제거", conversion_settings_title: "변환 설정", quality_label_simple: "품질",
@@ -169,7 +171,8 @@ export const translations = {
         page_title: "Webplified. - Conversor WebP Gratuito", project_name_header: "Webplified.",
         toggle_mode_png_jpg_to_webp: "PNG/JPG → WebP", toggle_mode_webp_to_png_jpg: "WebP → PNG/JPG",
         drag_drop_text_to_webp: "Arrastra y suelta archivos PNG, JPG aquí o", drag_drop_text_from_webp: "Arrastra y suelta archivos WebP aquí o",
-        select_files_btn: "Seleccionar Archivos", upload_constraints_text: "Máx. 100 archivos, 20MB c/u (Aviso >10MB)",
+        select_files_btn: "Seleccionar Archivos", 
+        upload_constraints_text: "Máx. 100 archivos, 20MB c/u", // Modificado
         conversion_candidate_pool_title: "Archivos para Convertir (<span id='file-count-pool'>0</span> archivos)",
         conversion_results_title_short: "Resultados de Conversión (<span id='file-count-pool'>0</span> archivos)",
         remove_btn_text: "Eliminar", conversion_settings_title: "Ajustes de Conversión", quality_label_simple: "Calidad",
@@ -251,7 +254,8 @@ export const translations = {
         page_title: "Webplified. - Conversor WebP Gratuito", project_name_header: "Webplified.",
         toggle_mode_png_jpg_to_webp: "PNG/JPG → WebP", toggle_mode_webp_to_png_jpg: "WebP → PNG/JPG",
         drag_drop_text_to_webp: "Arraste e solte arquivos PNG, JPG aqui ou", drag_drop_text_from_webp: "Arraste e solte arquivos WebP aqui ou",
-        select_files_btn: "Selecionar Arquivos", upload_constraints_text: "Máx. 100 arquivos, 20MB cada (Aviso >10MB)",
+        select_files_btn: "Selecionar Arquivos", 
+        upload_constraints_text: "Máx. 100 arquivos, 20MB cada", // Modificado
         conversion_candidate_pool_title: "Arquivos para Converter (<span id='file-count-pool'>0</span> arquivos)",
         conversion_results_title_short: "Resultados da Conversão (<span id='file-count-pool'>0</span> arquivos)",
         remove_btn_text: "Remover", conversion_settings_title: "Configurações de Conversão", quality_label_simple: "Qualidade",
