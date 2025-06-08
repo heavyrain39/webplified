@@ -406,7 +406,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (domElements.dragDropArea) {
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => { e.preventDefault(); e.stopPropagation(); }, false);
+        // <<<<< 여기가 수정된 부분입니다 >>>>>
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            domElements.dragDropArea.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
         ['dragenter', 'dragover'].forEach(eventName => {
             domElements.dragDropArea.addEventListener(eventName, (e) => {
                 if (domElements.listAreaWrapper.classList.contains('processing')) return;
