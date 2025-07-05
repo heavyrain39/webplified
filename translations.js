@@ -3,21 +3,20 @@ export const translations = {
     en: {
         page_title: "Webplified. - Free WebP Converter",
         project_name_header: "Webplified.",
-        // toggle_mode... 키는 더 이상 사용되지 않지만, 다른 곳에서 참조할 가능성을 대비해 일단 남겨둡니다.
         toggle_mode_png_jpg_to_webp: "PNG/JPG → WebP",
         toggle_mode_webp_to_png_jpg: "WebP → PNG/JPG",
-        // 드래그앤드롭 텍스트는 유지됩니다.
         drag_drop_text_to_webp: "Drag & drop PNG, JPG files here or",
         drag_drop_text_from_webp: "Drag & drop WebP files here or",
         select_files_btn: "Select Files", 
-        upload_constraints_text: "Max 100 files, 20MB each", // 용량 텍스트 업데이트
+        upload_constraints_text: "Max 100 files, 20MB each",
         conversion_candidate_pool_title: "Conversion Candidates (<span id='file-count-pool'>0</span> files)",
         conversion_results_title_short: "Conversion Results (<span id='file-count-pool'>0</span> files)",
         remove_btn_text: "Remove",
         conversion_settings_title: "Conversion Settings",
         quality_label_simple: "Quality",
         info_icon_text: "ⓘ",
-        quality_tooltip_text: "Lowering quality reduces file size but may cause image degradation. Ideal for photos.",
+        // --- 툴팁 텍스트 수정 ---
+        quality_tooltip_text: "Lowering quality reduces file size but may cause image degradation. This method is especially effective for reducing the file size of photographic images.",
         quality_tooltip_text_png: "When converting from WebP to PNG, the original quality is preserved as much as possible, and no separate quality setting is applied.",
         quality_na_text: "N/A",
         reverse_format_label: "Output Format:",
@@ -30,7 +29,6 @@ export const translations = {
         filename_option_prefix: "Add prefix",
         filename_option_suffix: "Add suffix",
         filename_option_numbering: "Auto-numbering",
-        // --- 신규 추가: Placeholder 텍스트 ---
         filename_prefix_placeholder: "e.g. myprefix_",
         filename_suffix_placeholder: "e.g. _converted",
         metadata_notice_text: "Note: Metadata (EXIF, etc.) is removed during conversion.",
@@ -58,7 +56,6 @@ export const translations = {
         why_quality_desc: "Webplified does more than just shrink file sizes. The crucial transparency of PNG files is perfectly preserved, and JPEGs retain maximum clarity. Plus, with two-way conversion support, you can easily change WebP files back to PNG or JPG. Use the quality slider to find your perfect balance between compression and image quality. We guarantee satisfying results, every time.",
         why_ux_title: "✓ Intuitive & Easy to Use.",
         why_ux_desc: "Countless web-based converters suffer from poor or unnecessarily complex designs. Webplified offers a sleek, minimalist design with an intuitive UI that anyone can master. The original vs. converted image comparison slider is sure to impress.",
-        // --- 수정: 교차 홍보 링크 추가 ---
         why_webplified_conclusion: "Experience Webplified today—security, speed, quality, and user experience, all in one. <b>And yes, it's completely free.</b><p class=\"sister-project-promo\">※ Need an AVIF converter too? Visit <b><a href='https://heavyrain39.github.io/avified/?lang=en' target='_blank' rel='noopener noreferrer'>Avified</a></b>, our sister project built with the same technology and design.</p>",
         support_us_section_title: "Support Webplified!",
         support_us_section_intro: "Hope you're enjoying Webplified's fast, secure, and free conversion! This handy tool is a passion project by a solo developer. Even a small contribution helps Webplified grow, reach more users, and continually improve. Every bit of support fuels Webplified's operation and future improvements.",
@@ -70,14 +67,11 @@ export const translations = {
         contact_twitter_label: "Twitter:",
         contact_github_label: "GitHub:",
         copyright_text: `© 2025 Webplified. All Rights Reserved.`,
-        // upload_section_title은 이제 개별 카드 타이틀로 대체됨
         comparison_label_original: "Original",
         comparison_label_converted: "Converted",
         error_opening_comparison_detail: "Could not display images. Please try again.",
-        // --- 신규 추가: 업로드 카드 타이틀 ---
         upload_title_to_webp: "PNG/JPG → WebP",
         upload_title_from_webp: "WebP → PNG/JPG",
-        // --- 신규 추가: 모드 혼합 방지 에러 메시지 ---
         error_mixed_mode_selection: "You cannot mix file types for different conversion modes. Please clear the list to switch modes.",
 
         // Toast Messages
@@ -119,14 +113,15 @@ export const translations = {
         drag_drop_text_to_webp: "여기에 PNG, JPG 파일을 드래그 앤 드롭하거나",
         drag_drop_text_from_webp: "여기에 WebP 파일을 드래그 앤 드롭하거나",
         select_files_btn: "파일 선택",
-        upload_constraints_text: "최대 100개 파일, 각 20MB 이하", // 수정됨
+        upload_constraints_text: "최대 100개 파일, 각 20MB 이하",
         conversion_candidate_pool_title: "변환 후보 목록 (<span id='file-count-pool'>0</span>개)",
         conversion_results_title_short: "변환 결과 (<span id='file-count-pool'>0</span>개)",
         remove_btn_text: "제거",
         conversion_settings_title: "변환 설정",
         quality_label_simple: "품질",
         info_icon_text: "ⓘ",
-        quality_tooltip_text: "품질을 낮추면 용량이 더 절약되지만, 이미지 손실이 발생할 수 있습니다. 사진에 적합합니다.",
+        // --- 툴팁 텍스트 수정 ---
+        quality_tooltip_text: "품질을 낮추면 용량이 더 절약되지만, 이미지 손실이 발생할 수 있습니다. 이 방식은 특히 사진 이미지의 용량을 줄이는 데 효과적입니다.",
         quality_tooltip_text_png: "WebP에서 PNG 파일로 변환하는 경우 원본 품질을 최대한 유지하며, 별도의 품질 설정이 적용되지 않습니다.",
         quality_na_text: "해당 없음",
         reverse_format_label: "변환 포맷:",
@@ -139,7 +134,6 @@ export const translations = {
         filename_option_prefix: "접두어 추가",
         filename_option_suffix: "접미어 추가",
         filename_option_numbering: "자동 번호 매기기",
-        // --- 신규 추가: Placeholder 텍스트 ---
         filename_prefix_placeholder: "예: myprefix_",
         filename_suffix_placeholder: "예: _converted",
         metadata_notice_text: "참고: 메타데이터(EXIF 등)는 변환 시 제거됩니다.",
@@ -167,7 +161,6 @@ export const translations = {
         why_quality_desc: "웹플리파이드는 파일 크기만 줄이는 것이 아닙니다. PNG 파일의 핵심인 투명도값은 완벽하게 보존되며, JPG 역시 최대한의 선명함을 유지한 상태로 변환 가능합니다. 또한 WebP 파일을 다시 PNG 혹은 JPG 파일로 손쉽게 역변환할 수 있도록 양방향 변환을 지원합니다. 품질 슬라이더로 여러분의 필요에 맞게 압축률과 화질 사이의 최적 포인트를 세팅해 보세요. 언제나 만족스러운 결과물을 보장하겠습니다.",
         why_ux_title: "✓ 쉽고 편리한 인터페이스",
         why_ux_desc: "허술하거나 불필요하게 복잡한 디자인으로 만들어진 웹 기반 변환기가 무수히 많습니다. 웹플리파이드는 세련되고 미니멀한 디자인과 더불어 누구나 쉽게 사용할 수 있는 직관적인 UI를 제공합니다. 원본과 변환본을 직접 비교할 수 있는 슬라이더 기능은 더할 나위 없이 만족스러울 것입니다.",
-        // --- 수정: 교차 홍보 링크 추가 ---
         why_webplified_conclusion: "보안, 속도, 품질, 사용자 경험까지 모두 갖춘 웹플리파이드를 지금 바로 경험해 보세요. <b>물론 완전히 무료입니다.</b><p class=\"sister-project-promo\">※ 혹시 AVIF 이미지 변환이 필요하신가요? Webplified의 기술과 디자인을 그대로 담은 자매 프로젝트, <b><a href='https://heavyrain39.github.io/avified/?lang=ko' target='_blank' rel='noopener noreferrer'>Avified</a></b>를 방문해 보세요.</p>",
         support_us_section_title: "웹플리파이드를 응원해 주세요!",
         support_us_section_intro: "빠르고 안전한 무료 변환 서비스, 마음에 드셨나요? 웹플리파이드는 1인 개발로 만들어집니다. 작은 후원으로 더 많은 사람들이 혜택을 받을 수 있도록 도와주세요. 소중한 후원은 서비스 운영과 개선을 위해 사용됩니다.",
@@ -179,14 +172,11 @@ export const translations = {
         contact_twitter_label: "트위터:",
         contact_github_label: "GitHub:",
         copyright_text: `© 2025 Webplified. All Rights Reserved.`,
-        // upload_section_title은 이제 개별 카드 타이틀로 대체됨
         comparison_label_original: "원본",
         comparison_label_converted: "변환본",
         error_opening_comparison_detail: "이미지를 표시할 수 없습니다. 다시 시도해 주세요.",
-        // --- 신규 추가: 업로드 카드 타이틀 ---
         upload_title_to_webp: "PNG/JPG → WebP",
         upload_title_from_webp: "WebP → PNG/JPG",
-        // --- 신규 추가: 모드 혼합 방지 에러 메시지 ---
         error_mixed_mode_selection: "서로 다른 변환 모드의 파일들을 한 번에 변환할 수 없습니다. 모드를 변경하려면 목록을 비워주세요.",
 
         // Toast Messages
@@ -228,14 +218,15 @@ export const translations = {
         drag_drop_text_to_webp: "Arrastra y suelta archivos PNG, JPG aquí o",
         drag_drop_text_from_webp: "Arrastra y suelta archivos WebP aquí o",
         select_files_btn: "Seleccionar Archivos", 
-        upload_constraints_text: "Máx. 100 archivos, 20MB c/u", // Modificado
+        upload_constraints_text: "Máx. 100 archivos, 20MB c/u",
         conversion_candidate_pool_title: "Archivos para Convertir (<span id='file-count-pool'>0</span> archivos)",
         conversion_results_title_short: "Resultados de Conversión (<span id='file-count-pool'>0</span> archivos)",
         remove_btn_text: "Eliminar",
         conversion_settings_title: "Ajustes de Conversión",
         quality_label_simple: "Calidad",
         info_icon_text: "ⓘ",
-        quality_tooltip_text: "Reducir la calidad disminuye el tamaño del archivo pero puede causar degradación. Ideal para fotos.",
+        // --- 툴팁 텍스트 수정 ---
+        quality_tooltip_text: "Reducir la calidad disminuye el tamaño del archivo pero puede causar degradación. Este método es especialmente eficaz para reducir el tamaño de las imágenes fotográficas.",
         quality_tooltip_text_png: "Al convertir de WebP a PNG, la calidad original se preserva al máximo y no se aplica ninguna configuración de calidad adicional.",
         quality_na_text: "N/A",
         reverse_format_label: "Formato de Salida:",
@@ -248,7 +239,6 @@ export const translations = {
         filename_option_prefix: "Añadir prefijo",
         filename_option_suffix: "Añadir sufijo",
         filename_option_numbering: "Autonumerar",
-        // --- 신규 추가: Placeholder 텍스트 ---
         filename_prefix_placeholder: "p. ej. myprefix_",
         filename_suffix_placeholder: "p. ej. _converted",
         metadata_notice_text: "Nota: Los metadatos (EXIF, etc.) se eliminan durante la conversión.",
@@ -276,7 +266,6 @@ export const translations = {
         why_quality_desc: "Webplified hace más que solo reducir el tamaño de los archivos. La transparencia crucial de los archivos PNG se preserva perfectamente, y los JPG retienen la máxima claridad. Además, con soporte para conversión bidireccional, puedes cambiar fácilmente archivos WebP de nuevo a PNG o JPG. Usa el control deslizante de calidad para encontrar tu equilibrio perfecto entre compresión y calidad de imagen. Garantizamos resultados satisfactorios, siempre.",
         why_ux_title: "✓ Intuitivo y Fácil de Usar.",
         why_ux_desc: "Innumerables conversores web sufren de diseños deficientes o innecesariamente complejos. Webplified ofrece un diseño elegante y minimalista con una interfaz de usuario intuitiva que cualquiera puede dominar. El control deslizante para comparar la imagen original con la convertida seguro te impresionará.",
-        // --- 수정: 교차 홍보 링크 추가 ---
         why_webplified_conclusion: "Prueba Webplified hoy—seguridad, velocidad, calidad y experiencia de usuario, todo en uno. <b>Y sí, es completamente gratis.</b><p class=\"sister-project-promo\">※ ¿También necesitas un conversor de AVIF? Visita <b><a href='https://heavyrain39.github.io/avified/?lang=es' target='_blank' rel='noopener noreferrer'>Avified</a></b>, nuestro proyecto hermano construido con la misma tecnología y diseño.</p>",
         support_us_section_title: "¡Apoya a Webplified!",
         support_us_section_intro: "¡Esperamos que estés disfrutando de la conversión rápida, segura y gratuita de Webplified! Esta útil herramienta es un proyecto personal desarrollado con dedicación por una sola persona. Incluso una pequeña contribución ayuda a Webplified a crecer, llegar a más usuarios y mejorar continuamente. Cada aporte impulsa directamente el funcionamiento y las futuras mejoras de Webplified.",
@@ -288,14 +277,11 @@ export const translations = {
         contact_twitter_label: "Twitter:",
         contact_github_label: "GitHub:",
         copyright_text: `© 2025 Webplified. Todos los derechos reservados.`,
-        // upload_section_title은 이제 개별 카드 타이틀로 대체됨
         comparison_label_original: "Original",
         comparison_label_converted: "Convertido",
         error_opening_comparison_detail: "No se pudieron mostrar las imágenes. Por favor, inténtalo de nuevo.",
-        // --- 신규 추가: 업로드 카드 타이틀 ---
         upload_title_to_webp: "PNG/JPG → WebP",
         upload_title_from_webp: "WebP → PNG/JPG",
-        // --- 신규 추가: 모드 혼합 방지 에러 메시지 ---
         error_mixed_mode_selection: "No puedes mezclar tipos de archivo para diferentes modos de conversión. Por favor, limpia la lista para cambiar de modo.",
 
         // Toast Messages
@@ -337,14 +323,15 @@ export const translations = {
         drag_drop_text_to_webp: "Arraste e solte arquivos PNG, JPG aqui ou",
         drag_drop_text_from_webp: "Arraste e solte arquivos WebP aqui ou",
         select_files_btn: "Selecionar Arquivos", 
-        upload_constraints_text: "Máx. 100 arquivos, 20MB cada", // Modificado
+        upload_constraints_text: "Máx. 100 arquivos, 20MB cada",
         conversion_candidate_pool_title: "Arquivos para Converter (<span id='file-count-pool'>0</span> arquivos)",
         conversion_results_title_short: "Resultados da Conversão (<span id='file-count-pool'>0</span> arquivos)",
         remove_btn_text: "Remover",
         conversion_settings_title: "Configurações de Conversão",
         quality_label_simple: "Qualidade",
         info_icon_text: "ⓘ",
-        quality_tooltip_text: "Reduzir a qualidade diminui o tamanho do arquivo, mas pode causar degradação. Ideal para fotos.",
+        // --- 툴팁 텍스트 수정 ---
+        quality_tooltip_text: "Reduzir a qualidade diminui o tamanho do arquivo, mas pode causar degradação. Este método é especialmente eficaz para reduzir o tamanho de imagens fotográficas.",
         quality_tooltip_text_png: "Ao converter de WebP para PNG, a qualidade original é preservada ao máximo e nenhuma configuração de qualidade adicional é aplicada.",
         quality_na_text: "N/A",
         reverse_format_label: "Formato de Saída:",
@@ -357,7 +344,6 @@ export const translations = {
         filename_option_prefix: "Adicionar prefixo",
         filename_option_suffix: "Adicionar sufixo",
         filename_option_numbering: "Autonumerar",
-        // --- 신규 추가: Placeholder 텍스트 ---
         filename_prefix_placeholder: "ex: myprefix_",
         filename_suffix_placeholder: "ex: _converted",
         metadata_notice_text: "Nota: Metadados (EXIF, etc.) são removidos durante a conversão.",
@@ -382,13 +368,12 @@ export const translations = {
         why_speed_title: "✓ Velocidade da Luz, Eficiência Máxima.",
         why_speed_desc: "Esperar é um tédio. Construído com as tecnologias web mais recentes, o Webplified converte imagens na velocidade da luz sem congelar a interface. Processe até 100 arquivos em um instante. Pare de perder tempo—o Webplified torna a conversão de imagens imediata.",
         why_quality_title: "✓ Detalhe Perfeito, Zero Compromisso.",
-        why_quality_desc: "O Webplified faz mais do que apenas diminuir o tamanho dos arquivos. A transparência crucial dos arquivos PNG é perfeitamente preservada, e os JPEGs retêm a máxima clareza. Além disso, com suporte para conversão bidirecional, você pode facilmente alterar arquivos WebP de volta para PNG ou JPG. Use o controle deslizante de qualidade para encontrar o equilíbrio perfeito entre compressão e qualidade da imagem. Garantimos resultados satisfatórios, sempre.",
+        why_quality_desc: "O Webplified faz mais do que apenas diminuir o tamanho dos arquivos. A transparência crucial dos arquivos PNG é perfeitamente preservada, e os JPEGs retêm a máxima clareza. Além disso, com suporte para conversão bidireccional, você pode facilmente alterar arquivos WebP de volta para PNG ou JPG. Use o controle deslizante de qualidade para encontrar o equilíbrio perfeito entre compressão e qualidade da imagem. Garantimos resultados satisfatórios, sempre.",
         why_ux_title: "✓ Intuitivo e Fácil de Usar.",
         why_ux_desc: "Inúmeros conversores web sofrem com designs ruins ou desnecessariamente complexos. O Webplified oferece um design elegante e minimalista com uma interface de usuário intuitiva que qualquer um pode dominar. O controle deslizante para comparar a imagem original com a convertida certamente irá impressionar.",
-        // --- 수정: 교차 홍보 링크 추가 ---
         why_webplified_conclusion: "Experimente o Webplified hoje—segurança, velocidade, qualidade e experiência do usuário, tudo em um. <b>E sim, é totalmente gratuito.</b><p class=\"sister-project-promo\">※ Precisa de um conversor AVIF também? Visite o <b><a href='https://heavyrain39.github.io/avified/?lang=pt' target='_blank' rel='noopener noreferrer'>Avified</a></b>, nosso projeto irmão construído com a mesma tecnologia e design.</p>",
         support_us_section_title: "Apoie o Webplified!",
-        support_us_section_intro: "Esperamos que você esteja aproveitando a conversão rápida, segura e gratuita do Webplified! Esta ferramenta prática é um projeto pessoal, desenvolvido com paixão por uma única pessoa. Mesmo uma pequena contribuição ajuda o Webplified a crescer, alcançar mais usuários e melhorar continuamente. Todo apoio impulsiona diretamente o funcionamento e as futuras melhorias do Webplified.",
+        support_us_section_intro: "Esperamos que você esteja aproveitando a conversão rápida, segura e gratuita do Webplified! Esta ferramenta prática é um projeto pessoal, desenvolvido com paixão por uma única pessoa. Mesmo uma pequena contribuição ajuda o Webplified a crescer, alcançar mais usuários e mejorar continuamente. Todo apoio impulsiona diretamente o funcionamento e as futuras melhorias do Webplified.",
         support_us_action_btn: "Apoiar com PayPal",
         support_us_url: "https://paypal.me/yakshawan?country.x=KR&locale.x=ko_KR",
         contact_section_title: "Contato",
@@ -397,14 +382,11 @@ export const translations = {
         contact_twitter_label: "Twitter:",
         contact_github_label: "GitHub:",
         copyright_text: `© 2025 Webplified. Todos os direitos reservados.`,
-        // upload_section_title은 이제 개별 카드 타이틀로 대체됨
         comparison_label_original: "Original",
         comparison_label_converted: "Convertido",
         error_opening_comparison_detail: "Não foi possível exibir as imagens. Por favor, tente novamente.",
-        // --- 신규 추가: 업로드 카드 타이틀 ---
         upload_title_to_webp: "PNG/JPG → WebP",
         upload_title_from_webp: "WebP → PNG/JPG",
-        // --- 신규 추가: 모드 혼합 방지 에러 메시지 ---
         error_mixed_mode_selection: "Você não pode misturar tipos de arquivo para diferentes modos de conversão. Por favor, limpe a lista para trocar de modo.",
 
         // Toast Messages
