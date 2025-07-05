@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     
     <!-- ================================================== -->
-    <!-- SEO & 소셜 미디어 공유 태그 (직접 추가한 부분) -->
+    <!-- SEO & 소셜 미디어 공유 태그 (Webplified 용으로 유지) -->
     <!-- ================================================== -->
     
     <!-- 1. 검색 결과에 표시될 기본 정보 -->
-    <title>Webplified. - Fast & Secure WebP Converter</title>
+    <title>Webplified. - Your Free WebP Converter</title>
     <meta name="description" content="Convert PNG/JPG to WebP, and WebP back to PNG/JPG. 100% free, private, and secure. All conversions are processed in your browser, no files are uploaded to a server.">
 
     <!-- 2. 페이스북, 카카오톡 등 소셜 미디어 공유 시 표시될 정보 (Open Graph) -->
-    <meta property="og:title" content="Webplified. - Fast & Secure WebP Converter">
+    <meta property="og:title" content="Webplified. - Your Free WebP Converter">
     <meta property="og:description" content="100% free and private WebP conversion right in your browser.">
-    <meta property="og:image" content="https://heavyrain39.github.io/Webplified/webp_004.webp">
+    <meta property="og:image" content="https://heavyrain39.github.io/Webplified/og-image.png">
     <meta property="og:url" content="https://heavyrain39.github.io/Webplified/">
     <meta property="og:type" content="website">
 
     <!-- 3. 트위터 공유 시 표시될 정보 (Twitter Cards) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Webplified. - Fast & Secure WebP Converter">
+    <meta name="twitter:title" content="Webplified. - Your Free WebP Converter">
     <meta name="twitter:description" content="100% free and private WebP conversion right in your browser.">
-    <meta name="twitter:image" content="https://heavyrain39.github.io/Webplified/webp_004.webp">
+    <meta name="twitter:image" content="https://heavyrain39.github.io/Webplified/og-image.png">
     
     <!-- 4. 구글이 이 페이지를 '소프트웨어 앱'으로 이해하게 만드는 구조화된 데이터 -->
     <script type="application/ld+json">
@@ -87,23 +87,44 @@
     </header>
 
     <main class="container">
-        <!-- ... upload-section, conversion-actions-section ... -->
-        <section id="upload-section">
-            <h2 data-i18n="upload_section_title">파일 추가</h2>
-            <div id="drag-drop-area">
-                <p data-i18n="drag_drop_text_to_webp">여기에 PNG, JPG 파일을 드래그 앤 드롭하거나</p>
-                <input type="file" id="file-input" multiple accept=".png,.jpg,.jpeg">
-                <label for="file-input" class="button" data-i18n="select_files_btn">파일 선택</label>
-                <p class="upload-constraints" data-i18n="upload_constraints_text">최대 100개 파일, 각 10MB 이하</p>
+        <!-- ========================================================== -->
+        <!-- START: UX 개선을 위한 업로드 섹션 구조 변경 (Avified 스타일) -->
+        <!-- ========================================================== -->
+        <section id="upload-section-wrapper">
+            <div class="upload-choice-container">
+                <!-- PNG/JPG -> WebP 변환 영역 -->
+                <div class="upload-area-container">
+                    <h2 data-i18n="upload_title_to_webp">PNG/JPG → WebP</h2>
+                    <div id="drag-drop-to-webp" class="drag-drop-area" data-mode="toWebp">
+                        <p data-i18n="drag_drop_text_to_webp">여기에 PNG, JPG 파일을 드래그 앤 드롭하거나</p>
+                        <input type="file" id="file-input-to-webp" class="file-input" multiple accept=".png,.jpg,.jpeg" data-mode="toWebp">
+                        <label for="file-input-to-webp" class="button" data-i18n="select_files_btn">파일 선택</label>
+                        <p class="upload-constraints" data-i18n="upload_constraints_text">최대 100개 파일, 각 20MB 이하</p>
+                    </div>
+                </div>
+                
+                <!-- WebP -> PNG/JPG 변환 영역 -->
+                <div class="upload-area-container">
+                    <h2 data-i18n="upload_title_from_webp">WebP → PNG/JPG</h2>
+                    <div id="drag-drop-from-webp" class="drag-drop-area" data-mode="fromWebp">
+                        <p data-i18n="drag_drop_text_from_webp">여기에 WebP 파일을 드래그 앤 드롭하거나</p>
+                        <input type="file" id="file-input-from-webp" class="file-input" multiple accept=".webp" data-mode="fromWebp">
+                        <label for="file-input-from-webp" class="button" data-i18n="select_files_btn">파일 선택</label>
+                        <p class="upload-constraints" data-i18n="upload_constraints_text">최대 100개 파일, 각 20MB 이하</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="conversion-actions-section" class="section-hidden">
              <div class="action-buttons-wrapper">
-                <button id="mode-toggle-btn" data-i18n="toggle_mode_png_jpg_to_webp">PNG/JPG → WebP</button>
+                <!-- mode-toggle-btn은 더 이상 필요 없으므로 제거하고, 변환 버튼만 남깁니다. -->
                 <button id="convert-all-btn" class="button primary-button" data-i18n="convert_all_btn_text">모두 변환 시작!</button>
             </div>
         </section>
+        <!-- ========================================================== -->
+        <!-- END: UX 개선을 위한 업로드 섹션 구조 변경 -->
+        <!-- ========================================================== -->
 
         <section id="conversion-pool-section" class="section-hidden">
             <div class="section-title-actions">

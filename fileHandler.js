@@ -34,8 +34,11 @@ export function generateOutputFilename(originalName, rule, prefix, suffix, index
 
 // --- File Handling Logic ---
 export function handleFiles(selectedFiles, state, domElements, uiCallbacks) {
-    console.log(`[HANDLER-LOG] handleFiles called. Current state.displayingResults: ${state.displayingResults}`);
+    console.log(`[HANDLER-LOG] handleFiles called. Current mode: ${state.conversionMode}`);
 
+    // ==============================================================================
+    // === 핵심 수정 로직: 변환 결과가 표시된 상태에서 새 파일을 추가하면, 모든 것을 초기화 ===
+    // ==============================================================================
     if (state.displayingResults) {
         console.log("[HANDLER-LOG] New files added while results were displayed. Clearing ALL old data for a new session.");
 
@@ -55,8 +58,10 @@ export function handleFiles(selectedFiles, state, domElements, uiCallbacks) {
         state.displayingResults = false;
         console.log(`[HANDLER-LOG] state.displayingResults set to false.`);
 
+        // hideConversionProgress를 호출하여 UI 상태를 초기화하고 버튼 등을 활성화
         uiCallbacks.hideConversionProgress();
     }
+    // ==============================================================================
 
     const newFilesArray = Array.from(selectedFiles);
     const filesToActuallyAdd = [];
@@ -67,6 +72,7 @@ export function handleFiles(selectedFiles, state, domElements, uiCallbacks) {
             showToast(getToastMessage(state.currentLanguage, 'max_files_exceeded_error', { maxFiles: 100 }), 'error');
             break;
         }
+        // Webplified에 맞게 최대 파일 사이즈 20MB로 상향
         const MAX_SIZE_MB_HARD = 20; const MAX_SIZE_BYTES_HARD = MAX_SIZE_MB_HARD * 1024 * 1024;
         const MAX_SIZE_MB_WARN = 10; const MAX_SIZE_BYTES_WARN = MAX_SIZE_MB_WARN * 1024 * 1024;
 
@@ -74,6 +80,8 @@ export function handleFiles(selectedFiles, state, domElements, uiCallbacks) {
             showToast(getToastMessage(state.currentLanguage, 'file_exceeds_limit_error', { fileName: file.name, fileSize: formatFileSize(file.size), maxSize: MAX_SIZE_MB_HARD }), 'error');
             continue;
         }
+        
+        // 파일 타입 검사는 이제 main.js에서 설정된 state.conversionMode를 기준으로 동작
         if (state.conversionMode === 'toWebp' && !['image/png', 'image/jpeg'].includes(file.type)) {
             showToast(getToastMessage(state.currentLanguage, 'invalid_file_type_to_webp_error', { fileName: file.name }), 'error');
             continue;
@@ -81,6 +89,7 @@ export function handleFiles(selectedFiles, state, domElements, uiCallbacks) {
             showToast(getToastMessage(state.currentLanguage, 'invalid_file_type_from_webp_error', { fileName: file.name }), 'error');
             continue;
         }
+
         if (state.filesToConvert.some(f => f.file.name === file.name && f.file.size === file.size) ||
             filesToActuallyAdd.some(f => f.file.name === file.name && f.file.size === file.size)) {
             console.warn(`File ${file.name} is already in the list or being added, and will be skipped.`);
@@ -124,6 +133,15 @@ export function removeFileFromPool(fileIdToRemove, state, uiCallbacks) {
         }
     }
     state.filesToConvert = state.filesToConvert.filter(item => item.id !== fileIdToRemove);
-    state.displayingResults = false; 
-    if (uiCallbacks.renderFilePoolList) uiCallbacks.renderFilePoolList();
+    
+    // 마지막 파일이 제거되면, 목록이 비워지면서 초기 화면으로 돌아가게 됨 (main.js의 hardReset과 유사한 효과)
+    if (state.filesToConvert.length === 0) {
+        state.displayingResults = false;
+        // renderFilePoolList는 내부적으로 updateSectionsVisibility를 호출하여 UI를 초기 상태로 만듦
+        uiCallbacks.renderFilePoolList(); 
+    } else {
+        // 아직 파일이 남아있다면, 결과 화면 상태만 해제하고 목록을 다시 렌더링
+        state.displayingResults = false; 
+        if (uiCallbacks.renderFilePoolList) uiCallbacks.renderFilePoolList();
+    }
 }

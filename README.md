@@ -4,7 +4,7 @@
 
 **Webplified** is the most beautiful, fast, and secure image conversion tool that runs entirely in your browser. Stop uploading your potentially sensitive image files to a server. With Webplified, you can convert your PNG/JPG images to WebP, or vice versa, with 100% privacy.
 
-![Webplified Screenshot](webp_004.webp)
+![Webplified Screenshot](banner.webp)
 
 ---
 
